@@ -1,4 +1,4 @@
-package exemplo01;
+package praticaIntegradoraArrays;
 
 public class Arrays {
     public static void main(String[] args) {
