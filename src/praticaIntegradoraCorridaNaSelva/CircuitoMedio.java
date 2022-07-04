@@ -1,38 +1,50 @@
 package praticaIntegradoraCorridaNaSelva;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CircuitoMedio extends Circuito implements Inscricao {
-    HashMap<Integer, Corredor> listaCorredores;
+public class CircuitoMedio implements Inscricao {
+    List<Corredor> listaCorredores;
     static Integer contador = 1;
 
-    public CircuitoMedio(HashMap<Integer, Corredor> listaCorredores) {
-        this.listaCorredores = listaCorredores;
-    }
-
-
-    @Override
-    public String toString() {
-        return "CircuitoPequeno: " + "\n" +
-                "Lista de Corredores do Circuito Pequeno = " + listaCorredores + "\n";
+    public CircuitoMedio() {
+        this.listaCorredores = new ArrayList<>();
     }
 
     @Override
-    public void incricao(Pessoa pessoa) {
+    public void incricao(Corredor corredor) {
         int preco;
-        if (!pessoa.inscrito) {
-            if (pessoa.idade <= 18) {
+        if (corredor.getNumeroDeInscricao() == null) {
+            if (corredor.getIdade() <= 18) {
                 preco = 2000;
             } else {
                 preco = 2300;
             }
-            Corredor corredor = new Corredor(pessoa,preco);
-            pessoa.inscrito = true;
-            this.listaCorredores.put(contador, corredor);
+            corredor.setValorInscricao(preco);
+            corredor.setNumeroDeInscricao(contador);
             contador++;
+            this.listaCorredores.add(corredor);
+            System.out.println(corredor.getNome() + " " + corredor.getSobrenome() + " está inscrito(a) no circuito médio com o numero de inscrição " + corredor.getNumeroDeInscricao() + ", " + "Valor da inscrição: " + corredor.getValorInscricao() );
         } else {
             System.out.println("A Pessoa já está inscrita em um circuito");
         }
+    }
+
+    @Override
+    public void desinscrever(Corredor corredor) {
+
+        if (listaCorredores.contains(corredor)) {
+            listaCorredores.remove(corredor);
+            System.out.println("O corredor " + corredor.getNome() + " com numero de inscrição: " + corredor.getNumeroDeInscricao() + " foi desisncrito do circuiro médio.");
+            corredor.setNumeroDeInscricao(null);
+            corredor.setValorInscricao(0);
+        } else {
+            System.out.println("O corredor não está inscrito no circuito médio");
+        }
+    }
+    @Override
+    public String toString() {
+        return "Lista de Corredores do Circuito Médio = " + listaCorredores + "\n";
     }
 
 }

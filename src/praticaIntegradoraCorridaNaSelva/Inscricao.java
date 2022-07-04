@@ -2,6 +2,7 @@ package praticaIntegradoraCorridaNaSelva;
 
 public interface Inscricao {
 
-    void incricao(Pessoa pessoa);
+    void incricao(Corredor corredor);
 
+    void desinscrever(Corredor corredor);
 }

@@ -3,32 +3,31 @@ package praticaIntegradoraCorridaNaSelva;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CircuitoPequeno implements Inscricao {
-
+public class CircuitoLongo implements Inscricao{
     List<Corredor> listaCorredores;
     static Integer contador = 1;
 
-    public CircuitoPequeno() {
+    public CircuitoLongo() {
         this.listaCorredores = new ArrayList<>();
     }
 
     @Override
     public void incricao(Corredor corredor) {
         int preco;
-        if (corredor.getNumeroDeInscricao() == null) {
-            if (corredor.getIdade() <= 18) {
-                preco = 1300;
+        if (corredor.getIdade() >= 18) {
+            if (corredor.getNumeroDeInscricao() == null) {
+                preco = 2800;
+                corredor.setValorInscricao(preco);
+                corredor.setNumeroDeInscricao(contador);
+                contador++;
+                this.listaCorredores.add(corredor);
+                System.out.println(corredor.getNome() + " " + corredor.getSobrenome() + " está inscrito(a) no circuito pequeno com o numero de inscrição " + corredor.getNumeroDeInscricao() + ", " + "valor da inscrição: " + corredor.getValorInscricao() + "\n");
             } else {
-                preco = 1500;
+                System.out.println("A Pessoa já está inscrita em um circuito");
             }
-            corredor.setValorInscricao(preco);
-            corredor.setNumeroDeInscricao(contador);
-            contador++;
-            this.listaCorredores.add(corredor);
-            System.out.println(corredor.getNome() + " " + corredor.getSobrenome() + " está inscrito(a) no circuito pequeno com o numero de inscrição " + corredor.getNumeroDeInscricao() + ", " + "valor da inscrição: " + corredor.getValorInscricao() + "\n");
         } else {
-            System.out.println("A Pessoa já está inscrita em um circuito");
-        }
+            System.out.println("Precisa ser maior de 18 anos para se inscrever no circuito longo!");
+            }
     }
 
     @Override
