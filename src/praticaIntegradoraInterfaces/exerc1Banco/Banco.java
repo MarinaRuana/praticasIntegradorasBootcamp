@@ -1,7 +1,9 @@
 package praticaIntegradoraInterfaces.exerc1Banco;
 import praticaIntegradoraInterfaces.exerc1Banco.models.*;
 
+
 public class Banco {
+
     public static void main(String[] args) {
         Basico b = new Basico();
         b.consultaSaldo();

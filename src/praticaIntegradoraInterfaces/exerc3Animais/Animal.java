@@ -1,11 +1,10 @@
 package praticaIntegradoraInterfaces.exerc3Animais;
 
-public class Animal {
+public abstract class Animal {
 
     public void emitirSom(){
     }
 
     public void comer(){
-
     }
 }

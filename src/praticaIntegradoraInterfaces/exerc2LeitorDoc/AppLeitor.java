@@ -1,6 +1,7 @@
 package praticaIntegradoraInterfaces.exerc2LeitorDoc;
 
-import java.util.ArrayList;
+
+import java.util.Arrays;
 import java.util.List;
 
 public class AppLeitor {
@@ -11,12 +12,11 @@ public class AppLeitor {
 
         Habilidade programacao = new Habilidade("Programação em java");
         Habilidade ingles = new Habilidade("Ingles básico");
-        List<Habilidade> habilidadesPessoa = new ArrayList<>();
-        habilidadesPessoa.add(programacao);
-        habilidadesPessoa.add(ingles);
+        List<Habilidade> habilidadesPessoa = Arrays.asList(programacao, ingles);
         Pessoa pessoa = new Pessoa("Marina", 30, habilidadesPessoa);
         Documento curriculo = new Curriculo(pessoa);
         LerDocumento.lerDoc(curriculo);
+        
 
         Documento livroPDF = new LivroPDF(50, "Marina", "Aprendendo Java", "Fantasia");
         LerDocumento.lerDoc(livroPDF);
